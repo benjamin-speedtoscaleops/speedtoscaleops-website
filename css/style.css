@@ -152,7 +152,19 @@ strong { color: var(--text); }
   color: var(--accent); margin-bottom: 0.8rem;
 }
 
-.card-addons { font-size: 0.87rem; border-top: 1px solid var(--line); padding-top: 0.9rem; }
+.card-addons { font-size: 0.95rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+.addon-list { margin-top: 0.6rem; }
+.card-model { font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 0.9rem; color: var(--text-dim); }
+
+.pilot {
+  margin-top: 1.2rem;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, var(--bg-card)), var(--bg-card) 55%);
+  border: 1px solid var(--accent-dim);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+.pilot h3 { font-size: 1.35rem; margin-bottom: 0.7rem; }
+.pilot p { color: var(--text-dim); max-width: 720px; margin-bottom: 1.4rem; }
 
 /* ---------- fit ---------- */
 
