@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 
@@ -390,6 +390,11 @@
   var value = document.getElementById('c-value');
   if (!leads) return;
   function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
+  function fill(el) {
+    var min = Number(el.min) || 0, max = Number(el.max) || 100;
+    var pct = max > min ? ((Number(el.value) - min) / (max - min)) * 100 : 0;
+    el.style.setProperty('--fill', pct + '%');
+  }
   function calc() {
     var L = Math.max(0, Number(leads.value) || 0);
     close.max = L;
@@ -403,6 +408,7 @@
     document.getElementById('r-lost').textContent = fmt(lost);
     document.getElementById('r-month').textContent = fmt(monthly);
     document.getElementById('r-year').textContent = fmt(monthly * 12);
+    fill(leads); fill(close); fill(value);
   }
   [leads, close, value].forEach(function (el) { el.addEventListener('input', calc); });
   calc();

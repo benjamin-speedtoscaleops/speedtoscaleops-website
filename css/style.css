@@ -299,30 +299,35 @@ strong { font-weight: 700; }
 }
 .calc-inputs input[type="range"] {
   -webkit-appearance: none; appearance: none;
-  width: 100%; height: 22px;
+  --fill: 0%;
+  width: 100%; height: 28px;
   background: transparent;
   cursor: pointer;
   margin: 0.4rem 0 0;
 }
 .calc-inputs input[type="range"]::-webkit-slider-runnable-track {
-  height: 4px; background: var(--ink); border-radius: 2px;
+  height: 6px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--green) var(--fill), #d4cfbf var(--fill));
 }
 .calc-inputs input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; appearance: none;
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--green);
-  border: 1.5px solid var(--ink);
-  box-shadow: 2px 2px 0 var(--scribble);
-  margin-top: -9px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--card);
+  border: 6px solid var(--green);
+  margin-top: -10px;
 }
 .calc-inputs input[type="range"]::-moz-range-track {
-  height: 4px; background: var(--ink); border-radius: 2px;
+  height: 6px; border-radius: 999px;
+  background: #d4cfbf;
+}
+.calc-inputs input[type="range"]::-moz-range-progress {
+  height: 6px; border-radius: 999px;
+  background: var(--green);
 }
 .calc-inputs input[type="range"]::-moz-range-thumb {
-  width: 19px; height: 19px; border-radius: 50%;
-  background: var(--green);
-  border: 1.5px solid var(--ink);
-  box-shadow: 2px 2px 0 var(--scribble);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--card);
+  border: 6px solid var(--green);
 }
 .calc-inputs input[type="range"]:focus-visible { outline: 2.5px solid var(--green-deep); outline-offset: 4px; }
 
