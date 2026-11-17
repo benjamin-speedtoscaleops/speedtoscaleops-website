@@ -12,16 +12,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
 <header class="nav">
   <a class="wordmark" href="#top"><svg class="bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2 6.5 13h4.5L9 22l8.5-11H13l1-9z"/></svg>Speed to Scale Ops</a>
   <nav class="nav-links">
+    <a href="#calc">The cost</a>
     <a href="#services">What we build</a>
-    <a href="#fit">Who it's for</a>
-    <a href="#how">How it works</a>
+    <a href="#cases">Case studies</a>
     <a href="#team">The operators</a>
   </nav>
   <a class="pill pill-small" href="https://calendar.app.google/YjVYmjU3zbw4j65b9" target="_blank" rel="noopener">
@@ -48,7 +48,29 @@
       <li>A lead called inside 5 minutes is 21&times; more likely to convert<sup>*</sup></li>
       <li>First three clients get the speed-to-lead build free</li>
     </ul>
+
+    <div class="video-ph tilt-l" role="img" aria-label="Sales video preview — coming soon">
+      <span class="play" aria-hidden="true">&#9654;</span>
+      <p class="video-cap">The 95-second pitch</p>
+    </div>
+    <p class="scribble video-scribble">dropping this week — watch this space</p>
   </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>60-second replies</span><span>&#10022;</span>
+      <span>booked calls that show up</span><span>&#10022;</span>
+      <span>61&times; measured growth</span><span>&#10022;</span>
+      <span>no ads, no lead gen</span><span>&#10022;</span>
+      <span>operations, not marketing</span><span>&#10022;</span>
+      <span>60-second replies</span><span>&#10022;</span>
+      <span>booked calls that show up</span><span>&#10022;</span>
+      <span>61&times; measured growth</span><span>&#10022;</span>
+      <span>no ads, no lead gen</span><span>&#10022;</span>
+      <span>operations, not marketing</span><span>&#10022;</span>
+    </div>
+  </div>
 
   <!-- LEAK -->
   <section class="leak">
@@ -83,53 +105,80 @@
         <p class="stat-cap">show-up rates when calls are booked same-day or next-day<sup>*</sup></p>
       </div>
       <div class="stat tilt-r">
-        <p class="stat-big">6&nbsp;&rarr;&nbsp;41</p>
-        <p class="stat-cap">clients: how far our fulfilment lead scaled one UK company's book</p>
+        <p class="stat-big">61&times;</p>
+        <p class="stat-cap">measured revenue growth while our fulfilment lead scaled one UK company from 6 to 41 clients</p>
       </div>
     </div>
     <p class="footnote"><sup>*</sup>Industry benchmarks: Harvard Business Review lead-response study; SegMetrics show-rate playbook.</p>
   </section>
 
+  <!-- CALCULATOR -->
+  <section id="calc" class="calc-sec">
+    <p class="sec-mark"><span class="num">02</span>The cost</p>
+    <h2>What is the leak costing <span class="hl">you</span>?</h2>
+    <p class="calc-lede">Your numbers, not ours. Three inputs, no email required.</p>
+    <div class="calc">
+      <div class="calc-inputs">
+        <label>Leads per month
+          <input id="c-leads" type="number" inputmode="numeric" min="0" max="100000" value="50">
+        </label>
+        <label>Of those, how many become customers?
+          <input id="c-close" type="number" inputmode="numeric" min="0" max="100000" value="10">
+        </label>
+        <label>What a customer is worth ($)
+          <input id="c-value" type="number" inputmode="numeric" min="0" max="100000000" value="500">
+        </label>
+      </div>
+      <div class="calc-result tilt-r">
+        <p class="ex-label">The receipt</p>
+        <p class="calc-line">Leads you pay for and lose: <strong id="r-lost">40</strong> a month</p>
+        <p class="calc-line">Win back just 1 in 5 of them:</p>
+        <p class="calc-big">+$<span id="r-month">4,000</span><span class="calc-unit">/month</span></p>
+        <p class="calc-line">That's <strong>$<span id="r-year">48,000</span> a year</strong> already sitting in your pipeline.</p>
+        <p class="calc-note">An illustration from your own inputs — not a promise. The free audit puts real numbers on it.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section id="services" class="services">
-    <p class="sec-mark"><span class="num">02</span>What we build</p>
-
-    <article class="sheet">
-      <h3>The <span class="hl">5-Minute</span> Pipeline</h3>
-      <p class="punch">Every new lead hears from you in under a minute, and your team is on the phone with them in under five.</p>
-      <div class="sheet-cols">
-        <div>
-          <p class="col-label">In the core build</p>
-          <ul class="ticks">
-            <li><strong>Speed to lead.</strong> Automated first-touch the moment a lead arrives, plus instant alerts to your team.</li>
-            <li><strong>Qualification &amp; routing.</strong> Structured intake that sorts real buyers from tire-kickers before anyone picks up the phone.</li>
-            <li><strong>Booking &amp; show-up.</strong> Calendars, reminders and nurture that get prospects on the call and keep them from ghosting.</li>
-            <li><strong>Pre-call intelligence.</strong> Your closers walk in knowing who they're talking to and what they want.</li>
-          </ul>
-        </div>
-        <div>
-          <p class="col-label">Add-ons, as your pipeline needs them</p>
-          <ul class="ticks">
-            <li><strong>Pipeline hygiene.</strong> CRM stages rebuilt to match how you actually sell, so forecasts mean something.</li>
-            <li><strong>Email &amp; nurture sequences.</strong> Leads who aren't ready yet stay warm instead of going dark.</li>
-            <li><strong>Old-lead reactivation.</strong> The leads you already paid for, worked again systematically.</li>
-            <li><strong>Close-friction removal.</strong> Contracts, payments and handoffs smoothed so won deals don't stall at the finish line.</li>
-          </ul>
-        </div>
-      </div>
-      <p class="model">One-time system build, then a monthly retainer that keeps it monitored, tuned and growing with your volume.</p>
-    </article>
-
-    <div class="offers-minor">
-      <article class="minor tilt-l">
+    <p class="sec-mark"><span class="num">03</span>What we build</p>
+    <h2>Three ways in</h2>
+    <div class="offers3">
+      <article class="offer">
+        <p class="chip">Start here</p>
+        <h3>The <span class="hl">5-Minute</span> Pipeline</h3>
+        <p class="punch">Every new lead hears from you in under a minute, and your team is on the phone with them in under five.</p>
+        <ul class="ticks">
+          <li><strong>Speed to lead.</strong> Automated first-touch the moment a lead arrives, plus instant alerts to your team.</li>
+          <li><strong>Qualification &amp; routing.</strong> Real buyers sorted from tire-kickers before anyone picks up the phone.</li>
+          <li><strong>Booking &amp; show-up.</strong> Calendars, reminders and nurture that keep prospects from ghosting.</li>
+          <li><strong>Pre-call intelligence.</strong> Your closers walk in knowing who they're talking to.</li>
+        </ul>
+        <p class="offer-note">Add-ons as you need them: automated follow-ups, pipeline hygiene, old-lead reactivation, close-friction removal.</p>
+        <p class="model">One-time build + a monthly retainer that keeps it tuned.</p>
+      </article>
+      <article class="offer">
+        <p class="chip chip-plain">Scale layer</p>
         <h3>Support + Knowledge Base</h3>
-        <p>More conversions means more customers — and more support tickets. We build the system that answers them: a company knowledge base wired into support intake, self-updating as issues get solved.</p>
+        <p class="punch">More conversions means more customers — and more support tickets. We build the system that answers them.</p>
+        <ul class="ticks">
+          <li><strong>One source of truth.</strong> A company knowledge base wired into support intake.</li>
+          <li><strong>Self-updating.</strong> Every solved issue feeds back in automatically.</li>
+          <li><strong>Sales knowledge captured.</strong> Your closers' know-how documented, not trapped in their heads.</li>
+        </ul>
         <p class="offer-note">Your team stops answering the same question twice.</p>
       </article>
-      <article class="minor tilt-r">
+      <article class="offer">
+        <p class="chip chip-plain">Foundation</p>
         <h3>Custom CRM Build</h3>
-        <p>When off-the-shelf stops fitting, we build a CRM around your actual sales process: stages that match reality, automation where it counts, reporting your team actually reads.</p>
-        <p class="offer-note">The numbers that run the business, surfaced automatically.</p>
+        <p class="punch">When off-the-shelf stops fitting, we build a CRM around your actual sales process.</p>
+        <ul class="ticks">
+          <li><strong>Stages that match reality</strong> — not a template's idea of your pipeline.</li>
+          <li><strong>Automation where it counts.</strong> Data entry, follow-ups and handoffs that run themselves.</li>
+          <li><strong>Reporting your team reads.</strong> The numbers that run the business, surfaced automatically.</li>
+        </ul>
+        <p class="offer-note">The numbers that run the business, on tap.</p>
       </article>
     </div>
 
@@ -143,9 +192,36 @@
     </aside>
   </section>
 
+  <!-- CASE STUDIES -->
+  <section id="cases" class="cases">
+    <p class="sec-mark"><span class="num">04</span>Case studies</p>
+    <h2>Watch us solve real jobs</h2>
+    <p class="cases-lede">Walkthroughs of real briefs — how we'd wire the system, step by step. First batch is in production.</p>
+    <div class="carousel" tabindex="0">
+      <article class="cs-card tilt-l">
+        <div class="cs-frame"><span class="play">&#9654;</span></div>
+        <p class="ex-label">Case study 01</p>
+        <p>Coaching business, 80 leads a month, next-day follow-up. The rebuild, drawn out.</p>
+        <p class="cs-soon">Coming soon</p>
+      </article>
+      <article class="cs-card tilt-r">
+        <div class="cs-frame"><span class="play">&#9654;</span></div>
+        <p class="ex-label">Case study 02</p>
+        <p>Home-services firm losing weekend enquiries. Same-day booking, wired in.</p>
+        <p class="cs-soon">Coming soon</p>
+      </article>
+      <article class="cs-card tilt-l">
+        <div class="cs-frame"><span class="play">&#9654;</span></div>
+        <p class="ex-label">Case study 03</p>
+        <p>Clinic with no-show problems. Reminders and pre-call briefs, end to end.</p>
+        <p class="cs-soon">Coming soon</p>
+      </article>
+    </div>
+  </section>
+
   <!-- FIT -->
   <section id="fit" class="fit-sec">
-    <p class="sec-mark"><span class="num">03</span>Who it's for</p>
+    <p class="sec-mark"><span class="num">05</span>Who it's for</p>
     <div class="fit">
       <div class="fit-col">
         <h2>Built for businesses that already get leads</h2>
@@ -170,7 +246,7 @@
 
   <!-- HOW -->
   <section id="how" class="how">
-    <p class="sec-mark"><span class="num">04</span>How it works</p>
+    <p class="sec-mark"><span class="num">06</span>How it works</p>
     <ol class="steps">
       <li>
         <h3>Audit</h3>
@@ -189,36 +265,36 @@
 
   <!-- TEAM -->
   <section id="team" class="team">
-    <p class="sec-mark"><span class="num">05</span>The operators</p>
+    <p class="sec-mark"><span class="num">07</span>The operators</p>
     <div class="people">
       <article class="person">
         <div class="polaroid tilt-l">
-          <img src="img/excellence.jpg" alt="Excellence Dumbiri" width="320" height="320" loading="lazy">
+          <img src="img/excellence.jpg" alt="Excellence Dumbiri" width="224" height="224" loading="lazy">
           <p class="scribble">Excellence</p>
         </div>
         <h3>Excellence Dumbiri</h3>
         <p class="role">Fulfilment lead</p>
-        <p class="bio">CRM and GoHighLevel specialist. Scaled a UK company from 6 to 41 clients on the back of systems like these.</p>
+        <p class="bio">CRM and GoHighLevel specialist. Scaled a UK company from 6 to 41 clients — 61&times; revenue, measured before and after.</p>
         <a class="profile-link" href="https://www.linkedin.com/in/excellencedumbiri/" target="_blank" rel="noopener">LinkedIn</a>
       </article>
       <article class="person">
         <div class="polaroid tilt-r">
-          <img src="img/ben.jpg" alt="Akande Benjamin" width="320" height="320" loading="lazy">
+          <img src="img/ben.jpg" alt="Akande Benjamin" width="224" height="224" loading="lazy">
           <p class="scribble">Ben</p>
         </div>
         <h3>Akande Benjamin</h3>
-        <p class="role">Systems &amp; automation</p>
+        <p class="role">Sales &amp; systems</p>
         <p class="bio">Engineer. Has built the full support-to-knowledge-base loop in production — including automations that fix issues before a human sees them.</p>
         <a class="profile-link" href="https://www.linkedin.com/in/benjamin-akande/" target="_blank" rel="noopener">LinkedIn</a>
       </article>
       <article class="person">
         <div class="polaroid tilt-l">
-          <img src="img/goga.jpg" alt="Oigoga Aba" width="320" height="320" loading="lazy">
+          <img src="img/goga.jpg" alt="Oigoga Aba" width="196" height="196" loading="lazy">
           <p class="scribble">Goga</p>
         </div>
         <h3>Oigoga Aba</h3>
         <p class="role">Operations &amp; process</p>
-        <p class="bio">Top Rated Plus on Upwork with a 100% job success score. Turns messy workflows into documented processes teams actually follow.</p>
+        <p class="bio">Top Rated Plus on Upwork — 100% job success across 3,900+ hours. Turns messy workflows into documented processes teams actually follow.</p>
         <a class="profile-link" href="https://www.upwork.com/freelancers/~01babe7e281f7982b6" target="_blank" rel="noopener">Upwork</a>
       </article>
     </div>
@@ -241,6 +317,28 @@
   <span class="foot-mark"><svg class="bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2 6.5 13h4.5L9 22l8.5-11H13l1-9z"/></svg>Speed to Scale Ops</span>
   <p>&copy; 2026 Speed To Scale Ops. Operations, not marketing.</p>
 </footer>
+
+<script>
+(function () {
+  var leads = document.getElementById('c-leads');
+  var close = document.getElementById('c-close');
+  var value = document.getElementById('c-value');
+  if (!leads) return;
+  function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
+  function calc() {
+    var L = Math.max(0, Number(leads.value) || 0);
+    var C = Math.min(L, Math.max(0, Number(close.value) || 0));
+    var V = Math.max(0, Number(value.value) || 0);
+    var lost = L - C;
+    var monthly = lost * 0.2 * V;
+    document.getElementById('r-lost').textContent = fmt(lost);
+    document.getElementById('r-month').textContent = fmt(monthly);
+    document.getElementById('r-year').textContent = fmt(monthly * 12);
+  }
+  [leads, close, value].forEach(function (el) { el.addEventListener('input', calc); });
+  calc();
+})();
+</script>
 
 </body>
 </html>
