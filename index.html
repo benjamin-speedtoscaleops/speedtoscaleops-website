@@ -119,14 +119,17 @@
     <p class="calc-lede">Your numbers, not ours. Three inputs, no email required.</p>
     <div class="calc">
       <div class="calc-inputs">
-        <label>Leads per month
-          <input id="c-leads" type="number" inputmode="numeric" min="0" max="100000" value="50">
+        <label>
+          <span class="lbl-row">Leads per month <output id="o-leads">50</output></span>
+          <input id="c-leads" type="range" min="10" max="500" step="5" value="50">
         </label>
-        <label>Of those, how many become customers?
-          <input id="c-close" type="number" inputmode="numeric" min="0" max="100000" value="10">
+        <label>
+          <span class="lbl-row">Of those, how many become customers? <output id="o-close">10</output></span>
+          <input id="c-close" type="range" min="0" max="50" step="1" value="10">
         </label>
-        <label>What a customer is worth ($)
-          <input id="c-value" type="number" inputmode="numeric" min="0" max="100000000" value="500">
+        <label>
+          <span class="lbl-row">What a customer is worth <output id="o-value">$500</output></span>
+          <input id="c-value" type="range" min="100" max="10000" step="100" value="500">
         </label>
       </div>
       <div class="calc-result tilt-r">
@@ -396,10 +399,14 @@
   function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
   function calc() {
     var L = Math.max(0, Number(leads.value) || 0);
+    close.max = L;
     var C = Math.min(L, Math.max(0, Number(close.value) || 0));
     var V = Math.max(0, Number(value.value) || 0);
     var lost = L - C;
     var monthly = lost * 0.2 * V;
+    document.getElementById('o-leads').textContent = fmt(L);
+    document.getElementById('o-close').textContent = fmt(C);
+    document.getElementById('o-value').textContent = '$' + fmt(V);
     document.getElementById('r-lost').textContent = fmt(lost);
     document.getElementById('r-month').textContent = fmt(monthly);
     document.getElementById('r-year').textContent = fmt(monthly * 12);
