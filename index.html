@@ -263,9 +263,78 @@
     </ol>
   </section>
 
+  <!-- WHAT WE NEED -->
+  <section id="bring" class="bring">
+    <p class="sec-mark"><span class="num">07</span>Bring</p>
+    <h2>What we need from you</h2>
+    <ul class="need-list">
+      <li>Access to your CRM — or we set one up</li>
+      <li>Your enquiry forms and lead sources, connected</li>
+      <li>Your team's calendars, for booking</li>
+      <li>Whoever takes the sales calls, in the loop</li>
+    </ul>
+  </section>
+
+  <!-- FIRST MONTH -->
+  <section id="month" class="month-sec">
+    <p class="sec-mark"><span class="num">08</span>After you sign</p>
+    <h2>The first month, week by week</h2>
+    <ol class="month">
+      <li>
+        <div class="m-left"><span class="m-num">1</span><span class="m-when">Day 1</span></div>
+        <div class="m-right">
+          <h3>Kickoff call</h3>
+          <p>We map your lead flow end to end: your numbers, your goal, who does what. Your group chat with us opens.</p>
+        </div>
+      </li>
+      <li>
+        <div class="m-left"><span class="m-num">2</span><span class="m-when">Days 2&ndash;5</span></div>
+        <div class="m-right">
+          <h3>Access and intake</h3>
+          <p>CRM, forms and calendars connected. Qualification questions agreed with you — budget, timing, fit.</p>
+        </div>
+      </li>
+      <li>
+        <div class="m-left"><span class="m-num">3</span><span class="m-when">Week 1</span></div>
+        <div class="m-right">
+          <h3>Speed to lead, live</h3>
+          <p>Instant replies and team alerts running on your real leads. Every new enquiry hears back in under a minute.</p>
+        </div>
+      </li>
+      <li>
+        <div class="m-left"><span class="m-num">4</span><span class="m-when">Week 2 at the latest</span></div>
+        <div class="m-right">
+          <h3>Booking and show-up, live</h3>
+          <p>Routing, booking links, confirmations and reminders wired in. The full system is on.</p>
+        </div>
+      </li>
+      <li>
+        <div class="m-left"><span class="m-num">5</span><span class="m-when">Weeks 3&ndash;4</span></div>
+        <div class="m-right">
+          <h3>Tune on live data</h3>
+          <p>Response times, booking rate and show-up rate measured. Pre-call briefs reach your closers before every call.</p>
+        </div>
+      </li>
+      <li>
+        <div class="m-left"><span class="m-num">6</span><span class="m-when">End of month</span></div>
+        <div class="m-right">
+          <h3>The before-and-after</h3>
+          <p>Your numbers, side by side with day one. You decide what we build next.</p>
+        </div>
+      </li>
+      <li>
+        <div class="m-left"><span class="m-num">7</span><span class="m-when">Every week</span></div>
+        <div class="m-right">
+          <h3>Your update</h3>
+          <p>The numbers that matter, in your chat. No meetings required.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
   <!-- TEAM -->
   <section id="team" class="team">
-    <p class="sec-mark"><span class="num">07</span>The operators</p>
+    <p class="sec-mark"><span class="num">09</span>The operators</p>
     <div class="people">
       <article class="person">
         <div class="polaroid tilt-l">
@@ -337,6 +406,48 @@
   }
   [leads, close, value].forEach(function (el) { el.addEventListener('input', calc); });
   calc();
+})();
+
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+
+  var stamp = document.querySelectorAll('.exhibit, .stat, .cs-card, .polaroid, .fit-not');
+  var rise = document.querySelectorAll('.offer, .pilot, .calc-result, .calc-inputs, .steps li, .person h3, main h2, .need-list li, .month li');
+  function prep(nodes, cls) {
+    nodes.forEach(function (el) {
+      el.classList.add(cls);
+      var sibs = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+      el.style.transitionDelay = Math.min(sibs, 5) * 80 + 'ms';
+    });
+  }
+  prep(stamp, 'reveal-stamp');
+  prep(rise, 'reveal');
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-stamp').forEach(function (el) { io.observe(el); });
+
+  var counted = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      counted.unobserve(e.target);
+      var el = e.target;
+      var m = el.textContent.match(/^(\d+)([\s\S]*)$/);
+      if (!m) return;
+      var target = Number(m[1]), rest = m[2], t0 = null;
+      function tick(ts) {
+        if (!t0) t0 = ts;
+        var p = Math.min(1, (ts - t0) / 700);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + rest;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.stat-big').forEach(function (el) { counted.observe(el); });
 })();
 </script>
 
