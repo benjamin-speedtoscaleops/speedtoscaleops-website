@@ -612,6 +612,43 @@ strong { font-weight: 700; }
   transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.2, 0.85, 0.3, 1.15);
 }
 
+/* ---------- legal pages ---------- */
+
+.legal { max-width: 720px; margin: 0 auto; padding: 4rem 20px 5.5rem; }
+.legal h1 {
+  font-family: "Anton", "Arial Narrow", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.04;
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  margin-bottom: 0.5rem;
+}
+.legal-date {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 2.5px solid var(--ink);
+}
+.legal h2 {
+  font-size: 1.25rem;
+  margin: 2.4rem 0 0.7rem;
+  max-width: none;
+}
+.legal p { margin-bottom: 1rem; }
+.legal p, .legal li { color: var(--ink); font-size: 0.97rem; }
+.legal ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+.legal li { margin-bottom: 0.6rem; }
+.legal li::marker { color: var(--green-deep); }
+
+.foot-links { display: flex; gap: 1.3rem; }
+.foot-links a { color: var(--dim); font-size: 0.84rem; text-decoration: none; }
+.foot-links a:hover { color: var(--ink); text-decoration: underline; }
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 880px) {
@@ -638,4 +675,5 @@ strong { font-weight: 700; }
   .steps, .people { grid-template-columns: 1fr; gap: 2rem; }
   .polaroid { align-self: flex-start; }
   .footer { flex-direction: column; text-align: center; }
+  .legal { padding: 2.6rem 16px 3.5rem; }
 }
