@@ -376,6 +376,80 @@
       <span class="pill-main"><strong>Hop on a quick 5-min call</strong><small>no charge, no obligation</small></span>
       <span class="pill-arrow">&rarr;</span>
     </a>
+    <style>
+      .lead-form { max-width: 640px; margin: 2.6rem auto 0; text-align: left; background: var(--card); border: 1.5px solid var(--ink); box-shadow: var(--shadow); padding: 1.8rem 1.6rem 1.6rem; }
+      .lead-form .chip { margin-bottom: 1.1rem; }
+      .lf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1rem; }
+      .lf-field { display: flex; flex-direction: column; gap: 0.35rem; }
+      .lf-field.lf-full { grid-column: 1 / -1; }
+      .lf-field label { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); }
+      .lf-field label small { text-transform: none; letter-spacing: 0; color: var(--dim); }
+      .lf-field input, .lf-field select, .lf-field textarea {
+        font: inherit; font-size: 0.95rem; color: var(--ink);
+        background: var(--paper); border: 1.5px solid var(--ink); border-radius: 0;
+        padding: 0.55rem 0.7rem; width: 100%;
+      }
+      .lf-field textarea { resize: vertical; min-height: 92px; }
+      .lf-field input:focus-visible, .lf-field select:focus-visible, .lf-field textarea:focus-visible { outline: 2.5px solid var(--green-deep); outline-offset: 1px; }
+      .lf-foot { display: flex; align-items: center; gap: 1rem; margin-top: 1.2rem; flex-wrap: wrap; }
+      .lf-submit { display: inline-block; font: inherit; font-weight: 700; font-size: 1rem; cursor: pointer; background: var(--green); color: var(--ink); border: 1.5px solid var(--ink); border-radius: 999px; padding: 0.7rem 1.7rem; box-shadow: var(--shadow-sm); transition: translate 0.08s ease, box-shadow 0.08s ease; }
+      .lf-submit:hover { translate: 2px 2px; box-shadow: 1px 1px 0 var(--scribble); }
+      .lf-submit:focus-visible { outline: 2.5px solid var(--green-deep); outline-offset: 2px; }
+      .lf-submit[disabled] { opacity: 0.6; cursor: wait; translate: none; }
+      .lf-note { font-size: 0.84rem; color: var(--dim); margin: 0; }
+      .lf-status { margin: 1rem 0 0; font-size: 0.95rem; }
+      .lf-status.err { color: #a03022; }
+      .lf-done { text-align: left; }
+      .lf-done h3 { font-family: "Anton", "Arial Narrow", sans-serif; font-weight: 400; text-transform: uppercase; font-size: 1.5rem; margin-bottom: 0.6rem; }
+      .lf-done p { max-width: none; margin: 0 0 0.4rem; }
+      .lf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+      @media (max-width: 580px) { .lf-grid { grid-template-columns: 1fr; } }
+    </style>
+    <form class="lead-form" id="lead-form" novalidate>
+      <span class="chip">Prefer to write? Tell us what's leaking</span>
+      <div class="lf-grid">
+        <div class="lf-field">
+          <label for="lf-name">Your name</label>
+          <input id="lf-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="lf-field">
+          <label for="lf-email">Work email</label>
+          <input id="lf-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="lf-field">
+          <label for="lf-phone">Phone / WhatsApp <small>— optional</small></label>
+          <input id="lf-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="lf-field">
+          <label for="lf-company">Company</label>
+          <input id="lf-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="lf-field lf-full">
+          <label for="lf-leads">Enquiries you get per month</label>
+          <select id="lf-leads" name="monthly_leads">
+            <option value="" selected>Pick one</option>
+            <option>Under 30</option>
+            <option>30&ndash;100</option>
+            <option>100&ndash;300</option>
+            <option>300+</option>
+            <option>No idea &mdash; that's the problem</option>
+          </select>
+        </div>
+        <div class="lf-field lf-full">
+          <label for="lf-message">Where do you think the leak is? <small>— optional</small></label>
+          <textarea id="lf-message" name="message" placeholder="e.g. Leads fill the form, but nobody calls them until the next day."></textarea>
+        </div>
+      </div>
+      <div class="lf-hp" aria-hidden="true">
+        <label for="lf-website">Website</label>
+        <input id="lf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="lf-foot">
+        <button class="lf-submit" type="submit">Send it over</button>
+        <p class="lf-note">Goes straight into our own pipeline &mdash; the same system we build for you.</p>
+      </div>
+      <p class="lf-status" id="lf-status" role="status" aria-live="polite"></p>
+    </form>
     <p class="cta-alt">or write to us: <a href="mailto:admin@speedtoscaleops.com">admin@speedtoscaleops.com</a></p>
   </section>
 
@@ -462,6 +536,62 @@
     });
   }, { threshold: 0.4 });
   document.querySelectorAll('.stat-big').forEach(function (el) { counted.observe(el); });
+})();
+
+(function () {
+  var form = document.getElementById('lead-form');
+  if (!form) return;
+  var status = document.getElementById('lf-status');
+  var btn = form.querySelector('.lf-submit');
+  var HOOK = 'https://services.leadconnectorhq.com/hooks/P3X8DgAMlH6oqrSA7OvR/webhook-trigger/d8bd94df-9e75-450f-b717-20cdba03fef5';
+
+  function done() {
+    form.innerHTML =
+      '<div class="lf-done">' +
+      '<span class="chip">Message received</span>' +
+      '<h3>It’s in our pipeline</h3>' +
+      '<p>Your note just went through the same system we build for clients — logged, tagged and routed before you finished reading this.</p>' +
+      '<p>One of us — Ben, Excellence or Goga — will come back to you today.</p>' +
+      '</div>';
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    status.textContent = '';
+    status.classList.remove('err');
+    if (!form.reportValidity()) return;
+    if (form.website && form.website.value) { done(); return; }
+
+    var name = form.name.value.trim().replace(/\s+/g, ' ');
+    var first = name.split(' ')[0] || '';
+    var last = name.split(' ').slice(1).join(' ');
+    var payload = {
+      first_name: first,
+      last_name: last,
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
+      company: form.company.value.trim(),
+      monthly_leads: form.monthly_leads.value,
+      message: form.message.value.trim(),
+      source: 'speedtoscaleops.com website form'
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    fetch(HOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      done();
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = 'Send it over';
+      status.classList.add('err');
+      status.textContent = 'That didn’t go through — please try again, or email admin@speedtoscaleops.com.';
+    });
+  });
 })();
 </script>
 
